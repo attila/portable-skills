@@ -31,6 +31,19 @@ findings, and a per-engagement ledger. They are written against `aw`, a
 workspace tool, but nothing in them requires it: the shape is what matters, and
 the commands degrade to plain git where the tool is absent.
 
+`orchestration-kernel` also ships two Claude Code agent definitions under
+`skills/orchestration-kernel/agents/`: `worker` for a unit that writes nothing,
+and `worker-writing` for one that writes a repository. Each runs one of the
+guards above from `.claude/skills/orchestration-kernel/`, so link the skill
+there too. With `aw`, the repository's manifest entry takes both:
+
+```toml
+skills = { dirs = ["skills"] }
+agents = { dirs = ["skills/orchestration-kernel/agents"] }
+```
+
+Without `aw`, symlink both files into `.claude/agents/`.
+
 ## Scope
 
 This repository is shared for reference and reuse. Issues, pull requests, wiki
