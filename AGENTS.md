@@ -15,3 +15,9 @@ has a test suite beside it; run that before changing one.
 A skill's `agents/` directory holds Claude Code agent definitions that belong
 to it. Each names a guard under the same skill's `bin/`, so change the two
 together.
+
+## Delivery model
+
+This repository uses trunk-based development. When the user explicitly asks for
+a commit and a push, commit directly to `trunk`. Do not open a feature branch or
+a pull request.
