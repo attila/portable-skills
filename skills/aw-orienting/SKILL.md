@@ -6,8 +6,10 @@ description: >-
   editing STATE.md, DECISIONS.md, FINDINGS.md or an engagement ledger, and
   before asserting any member repository's branch position, merge or CI state.
   Covers the cold-start full refresh, the mid-session targeted fetch, divergence
-  handling and what to report when a fetch fails. Not for ordinary work inside a
-  single member repository once its state is already established.
+  handling and what to report when a fetch fails. Also use when the human asks
+  to ff the members, fast-forward the members or bring the members up to date.
+  Not for ordinary work inside a single member repository once its state is
+  already established.
 ---
 
 # Orienting in an aw workspace
@@ -32,14 +34,16 @@ repository silently gets left out.
    merged reads to the next session as live work.
 3. **Fast-forward the layer** when step 2 shows it behind and not ahead:
    `git -C <root> merge --ff-only @{u}`. This step is raw git deliberately —
-   `aw` fetches but never writes to a working tree, and this write is a
-   judgement call.
+   `aw` writes a working tree only through `aw fast-forward`, which never
+   touches the layer, and this write is a judgement call.
 4. **If the layer is both ahead and behind, stop.** Report the divergence and
    let the human decide; never merge or rebase the workspace layer unasked.
-5. **A member repository behind its upstream is not yours to fast-forward.**
-   Surface the count before reading or asserting anything from that checkout,
-   the same way layer divergence is surfaced in step 4. That working tree
-   belongs to whichever worker session owns it (see Boundaries).
+5. **A member repository behind its upstream is not yours to fast-forward
+   unasked.** Surface the count before reading or asserting anything from that
+   checkout, the same way layer divergence is surfaced in step 4. When the human
+   asks for the members to be brought up to date, run `aw fast-forward`: it
+   moves only clean checkouts on their default branch and reports the rest (see
+   Boundaries).
 6. Read `context/STATE.md`, then the registers it points at, then the open
    engagement's plan and ledger.
 7. Report what changed since your last picture if you are resuming, not just the
@@ -95,7 +99,7 @@ a provisioning gap.
 - Fetching is read-only and safe unattended. Fast-forwarding the workspace layer
   is safe because that layer is committed and pushed automatically by its own
   governance.
-- Never fast-forward, merge, rebase or check out anything in a member
-  repository. Worker sessions own those working trees; you refresh their remote
-  refs only.
+- Run `aw fast-forward` only when the human asks, and never move a member
+  repository any other way: no merge, rebase, pull or checkout. Worker sessions
+  own those working trees; otherwise you refresh their remote refs only.
 - Divergence is a decision gate, never something to resolve on your own.
