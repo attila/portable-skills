@@ -38,6 +38,8 @@ through these, out loud, one line each:
   things the human said they would do.
 - **Member-repo state.** Branches pushed, pull requests opened or merged,
   checkouts left dirty or on a merged branch.
+- **Scratch.** Files the session left under `tmp/`, in the layer or in a
+  member checkout, including what its own test runs wrote there.
 
 Nothing found is a valid outcome. Say so and stop.
 
@@ -52,6 +54,7 @@ where it came up.
 | A durable fact | `FINDINGS.md` |
 | Run detail, verification verbatim | the owning engagement's ledger |
 | What a cold session needs to resume | `STATE.md` |
+| Scratch whose work has landed or been dropped | nowhere: delete it |
 
 A ledger entry carries the command and its output verbatim; `STATE.md` points at
 the ledger and never quotes it. If the owning engagement has no ledger, open
@@ -96,7 +99,10 @@ sweep commit, but do not split hairs over it.
 ## Boundaries
 
 - **The layer only.** Never commit, push or branch in a member repository here.
-  Unlanded member work is reported as a loose end, not landed.
+  Unlanded member work is reported as a loose end, not landed. Deleting the
+  session's own scratch from a member's `tmp/` is the one exception.
+- **Only your own scratch.** Delete what this session created; scratch still
+  feeding live work stays, and another session's files are not yours.
 - **Never a decision gate.** If the sweep turns up something that conflicts with
   a settled decision, record the conflict and raise it; do not resolve it.
 - **No secrets, ever** — not in `context/`, not in any tracked file.
