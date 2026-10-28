@@ -27,7 +27,8 @@ engagement. Treat them as authoritative for:
 - repository-specific delivery autonomy.
 
 Apply this skill only as the orchestration delta. Never replace or weaken the
-base contract. When a member repository declares no delivery model, default
+base contract. Quote every repository rule a go would override; an unquoted rule
+stands. When a member repository declares no delivery model, default
 conservatively: allow a signed commit, feature-branch push and draft pull
 request; stop before ready-for-review, merge or a protected-branch push.
 
