@@ -50,7 +50,8 @@ where it came up.
 
 | Loose end | Home |
 | --- | --- |
-| A binding ruling | `DECISIONS.md`, numbered, append-only |
+| A ruling still argued | a draft in the owning ledger, or `NOTES.md` |
+| A settled ruling the human confirms | `DECISIONS.md`, numbered, append-only |
 | A durable fact | `FINDINGS.md` |
 | Run detail, verification verbatim | the owning engagement's ledger |
 | What a cold session needs to resume | `STATE.md` |
@@ -61,6 +62,11 @@ the ledger and never quotes it. If the owning engagement has no ledger, open
 one — `STATE.md` is not a fallback home for run detail. A subject with no
 engagement stays an open item in `STATE.md`; do not mint an engagement to
 receive a single record.
+
+Read `NOTES.md` and each touched engagement's ledger for drafts not yet entered.
+Put each settled ruling to the human as the entry would stand, with one line on
+why it passes the decision tests in `context/artefacts.md`. Leave open drafts
+unasked.
 
 ## 4. Reconcile the summary records against reality
 
